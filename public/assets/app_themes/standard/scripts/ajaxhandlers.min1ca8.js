@@ -1,0 +1,1 @@
+var prm=Sys.WebForms.PageRequestManager.getInstance();prm.add_endRequest(function(){0<$(".productFilter").length&&$(".productFilter").wsAccordion.resetAjax("productFilter")});
