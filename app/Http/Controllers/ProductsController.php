@@ -18,6 +18,7 @@ use App\Technology;
 use Carbon\Carbon;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ProductsController extends Controller
 {
@@ -35,41 +36,54 @@ class ProductsController extends Controller
         $tech=Technology::orderBy('name','asc')->get();
 
 
+        $product= new product();
 
-        Product::insert([
-            'code'=>$request->code,
-            'name'=>$request->name,
-            'cat_id'=>$request->cat_id,
-            'description'=>$request->description,
-            'created_at' => Carbon::now(),
+        $product->code=$request->code;
+        $product->name=$request->name;
+        $product->cat_id=$request->cat_id;
+        $product->description=$request->description;
 
-        ]);
-
+        $product->save();
 
 
+        $subcat= new ProductSubCat();
+        $subcat->product_id=$product->id;
+        $subcat->category_id=$request->cat_id;
+        $subcat->sub_cat_id=$request->sub_cat_id;
+        $subcat->save();
 
-            ProductSubCat::insert([
-                'product_id' => $request->product_id,
-                'category_id' => $request->category_id,
-                'sub_cat_id' => $request->sub_cat_id,
-            ]);
 
 
-        ProductTechnology::insert([
-            'product_id'=>$request->product_id,
-            'technology_id'=>$request->technology_id,
-        ]);
+        $pro_tech= new ProductTechnology();
+        $pro_tech-> product_id=$product->id;
+        $pro_tech->technology_id=$request->technology_id;
+        $pro_tech->save();
 
-        ProductsColor::insert([
-            'product_id'=>$request->product_id,
-            'color_id'=>$request->color_id,
-        ]);
 
-        ProductImage::insert([
-           'product_id'=>$request->product_id,
-            'image'=>$request->image,
 
-        ]);
+        $pro_col= new ProductsColor();
+        $pro_col->product_id=$product->id;
+        $pro_col->color_id=$request->color_id;
+        $pro_col->save();
+
+
+
+        $images=array();
+        if($files=$request->file('images')){
+            foreach($files as $file){
+                $name=$file->getClientOriginalName();
+                $file->move('pro_image',$name);
+                $images[]=$name;
+
+
+                $pro_image=new ProductImage();
+                $pro_image->product_id=$product->id;
+                $pro_image->image=$request->image.$name;
+                $pro_image->save();
+            }
+        }
+
+
         return view('backend.product.product_add',compact('cat','sub_cat','color','tech'));
 
     }

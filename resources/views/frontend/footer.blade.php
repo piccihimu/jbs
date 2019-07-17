@@ -58,15 +58,15 @@
 
                                 </li>
                                 <li class="">
-                                    <a href="general/custom-design.html" target="_self"><span>Custom Design</span></a>
+                                    <a href="#" target="_self"><span>Custom Design</span></a>
 
                                 </li>
                                 <li class="">
-                                    <a href="general/sizing-specifications.html" target="_self"><span>Sizing specifications</span></a>
+                                    <a href="#" target="_self"><span>Sizing specifications</span></a>
 
                                 </li>
                                 <li class="">
-                                    <a href="general/ethical-statement.html" target="_self"><span>Ethical Statement</span></a>
+                                    <a href="#" target="_self"><span>Ethical Statement</span></a>
 
                                 </li>
                             </ul>

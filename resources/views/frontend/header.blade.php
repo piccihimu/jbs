@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <!-- styles -->
-    <link href="http://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet" type="text/css" /><link rel="stylesheet" href="{{url('/')}}/assets/app_themes/standard/styles/reset1ca8.css?v=20140319" /><link rel="stylesheet" href="../maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="http://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet" type="text/css" /><link rel="stylesheet" href="{{url('/')}}/assets/app_themes/standard/styles/reset1ca8.css?v=20140319" /><link rel="stylesheet" href="{{url('/')}}/assets/maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,900" rel="stylesheet" /><link rel="stylesheet" href="{{url('/')}}/assets/app_themes/standard/styles/baseccbd.css?v=20181011" />
@@ -122,10 +122,25 @@
                                     <li id="HeaderPlaceholder_T8B85556D012_rpt_Menu_li_navItem_1" class="nav-item">
 
                                     <?php $category=DB::table('categories')->get();?>
+                                    <?php $subcat=DB::table('subcats')->get();?>
+
                                     @foreach($category as $cat)
                                         <li class="nav-link nav-root-link"><a href="{{url('/cat/view',$cat->id)}}">{{ucwords($cat->cat_name)}}</a></li>
+                                        @foreach($subcat as $sub)
+                                            <li class="nav-link nav-root-link"><a href="{{url('/cat/view',$sub->id)}}">{{ucwords($sub->sub_cat_name)}}</a></li>
                                     @endforeach
+                                        @endforeach
                                     </ul>
+
+
+                                {{--@foreach ($categories as $category)--}}
+                                    {{--{* PARENT CATEGORY DISPLAY LOGIC *}--}}
+                                    {{--@foreach ($category->subCategories as $subCategory)--}}
+                                        {{--{* SUBCATEGORY DISPLAY LOGIC *}--}}
+                                    {{--@endforeach--}}
+                                {{--@endforeach--}}
+
+
 
                             </div>
                         </div>

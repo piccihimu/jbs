@@ -24,7 +24,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{--{{ config('app.name', 'Laravel') }}--}}
+                    Jbs Wear
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -33,9 +34,70 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
 
-                    </ul>
+                    @auth
+                        <ul class="navbar-nav mr-auto">
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                    Product
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{url('/product/insert')}}">Add Product</a>
+                                    <a class="dropdown-item" href="{{url('/product/view') }}">View Product</a>
+
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                    Category
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{url('/category/insert')}}">Add Category</a>
+                                    <a class="dropdown-item" href="{{url('/category/view') }}">View Category</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                    Sub Category
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{url('/sub/category/insert')}}">Add Sub Category</a>
+                                    <a class="dropdown-item" href="{{url('/sub/category/view') }}">View Sub Category</a>
+                                </div>
+                            </li>
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                    Color
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{url('/color/add')}}">Add Color</a>
+                                    <a class="dropdown-item" href="{{url('/color/view') }}">View Color</a>
+                                </div>
+                            </li>
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                  Technology
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{url('/technology/add')}}">Add Technology</a>
+                                    <a class="dropdown-item" href="{{url('/technology/view') }}">View Technology</a>
+                                </div>
+                            </li>
+
+                            <li class="navbar-brand">
+                                <a class="sign-out-alt" href="{{ url('/home') }}">Dashboard</a>
+                            </li>
+
+                        </ul>
+                        @endauth
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -50,31 +112,6 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                            <a class="navbar-brand" href="{{ url('/product/insert') }}">Add Product</a>
-                            <a class="navbar-brand" href="{{ url('/product/view') }}">View Product</a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                            <a class="navbar-brand" href="{{ url('/category/insert') }}">Add Category</a>
-                            <a class="navbar-brand" href="{{ url('/category/view') }}">View Category</a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                            <a class="navbar-brand" href="{{ url('/sub/category/insert') }}">Add Sub Category</a>
-                            <a class="navbar-brand" href="{{ url('/sub/category/view') }}">View Sub Category</a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                            <a class="navbar-brand" href="{{ url('/color/add') }}">Add Color</a>
-                            <a class="navbar-brand" href="{{ url('/color/view') }}">View Color</a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="navbar-brand" href="{{ url('/technology/add') }}">Add Technology</a>
-                                <a class="navbar-brand" href="{{ url('/technology/view') }}">View Technology</a>
-                            </li>
-
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

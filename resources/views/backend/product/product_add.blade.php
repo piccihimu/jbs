@@ -43,7 +43,7 @@
 
                         <div class="form-group">
                             <label for="exampleFormControlSelect2">Product Technology</label>
-                            <select multiple class="form-control select2-multi" multiple name="tech_id" id="tech_id">
+                            <select multiple class="form-control select2-multi" multiple name="technology_id" id="tech_id">
                                 @foreach($tech as $value)
                                     <option value="{{$value->id}}">{{$value->name}}</option>
                                 @endforeach
@@ -88,7 +88,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-6"> <label>Product Image</label><input type="file" class="form-control-file" name="image" id="image"></div>
+                            <div class="col-md-6"> <label>Product Imagewww</label><input type="file" class="form-control-file" name="image[]" id="image"></div>
                             <div class="col-md-6">
                                 <label for="exampleFormControlSelect1">Product Color</label>
                                 <select class="form-control"  name="color_id" id="color_id">
